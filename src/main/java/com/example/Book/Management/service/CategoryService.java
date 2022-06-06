@@ -21,4 +21,15 @@ public class CategoryService {
         return categoryRepo.findAll();
     }
 
+    public void editCategory(int categoryId, Category category) {
+        Category categoryEdit = categoryRepo.getById(categoryId);
+        categoryEdit.setCategoryName(category.getCategoryName());
+        categoryEdit.setDescription(category.getDescription());
+        categoryEdit.setImageUrl(category.getImageUrl());
+        categoryRepo.save(categoryEdit);
+    }
+
+    public boolean findById(int categoryId) {
+        return categoryRepo.findById(categoryId).isPresent();
+    }
 }
