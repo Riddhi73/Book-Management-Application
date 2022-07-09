@@ -1,6 +1,7 @@
 package com.example.Book.Management.service;
 
 import com.example.Book.Management.dto.BookDto;
+import com.example.Book.Management.exceptions.BookNotExistException;
 import com.example.Book.Management.model.Book;
 import com.example.Book.Management.model.Category;
 import com.example.Book.Management.repository.BookRepo;
@@ -58,5 +59,13 @@ public class BookService {
         book.setImageURL(bookDto.getImageURL());
         book.setPrice(bookDto.getPrice());
         bookRepo.save(book);
+    }
+
+    public Book findById(Integer bookId) {
+        Optional<Book> optionalBook = bookRepo.findById(bookId);
+        if (optionalBook.isEmpty()){
+            throw new BookNotExistException("Book is invalid: " + bookId);
+        }
+        return optionalBook.get();
     }
 }
