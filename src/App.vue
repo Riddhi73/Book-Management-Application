@@ -21,7 +21,8 @@ export default {
   components: { Navbar, Footer },
   data() {
     return {
-      baseURL : "https://limitless-lake-55070.herokuapp.com/",
+      // baseURL : "https://limitless-lake-55070.herokuapp.com/",
+      baseURL : "http://localhost:8080/",
       products: null,
       categories: null,
       cartCount: 0,
@@ -31,14 +32,14 @@ export default {
     async fetchData() {
       // api call to get all the categories
       await axios
-        .get(this.baseURL + "category/")
+        .get(this.baseURL + "category/list")
         .then((res) => {
           this.categories = res.data;
         })
         .catch((err) => console.log("err", err));
       // api call to get the products
       await axios
-        .get(this.baseURL + "product/")
+        .get(this.baseURL + "book/")
         .then((res) => {
           this.products = res.data;
         })
