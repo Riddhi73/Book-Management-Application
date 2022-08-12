@@ -34,8 +34,13 @@ public class BookController {
         return new ResponseEntity<>(new ApiResponse(true,"Book Has Been Added"), HttpStatus.CREATED);
     }
     @GetMapping
-    public ResponseEntity<List<BookDto>> getBook(){
-        List<BookDto> books = bookService.getAllBooks();
+    public ResponseEntity<List<Book>> getBook(){
+        List<Book> books = bookRepo.findAll();
+        return new ResponseEntity<>(books,HttpStatus.OK);
+    }
+    @GetMapping("/byId")
+    public ResponseEntity<List<Book>> getBookById(@PathVariable("bookId") Integer bookId){
+        List<Book> books = bookRepo.findByIdFromBook(bookId);
         return new ResponseEntity<>(books,HttpStatus.OK);
     }
     @PostMapping("/update{bookId}")
