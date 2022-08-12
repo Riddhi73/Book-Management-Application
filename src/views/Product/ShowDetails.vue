@@ -10,14 +10,14 @@
       <div class="col-md-6 col-12 pt-3 pt-md-0">
         <h4>{{ product.name }}</h4>
         <h6 class="catgory font-italic">{{ category.categoryName }}</h6>
-        <h6 class="font-weight-bold">$ {{ product.price }}</h6>
+        <h6 class="font-weight-bold"> {{ product.price }} Taka per week</h6>
         <p>
           {{ product.description }}
         </p>
         <div class="d-flex flex-row justify-content-between">
           <div class="input-group col-md-3 col-4 p-0">
             <div class="input-group-prepend">
-              <span class="input-group-text">Quantity</span>
+              <span class="input-group-text">Week</span>
             </div>
             <input type="number" class="form-control" v-model="quantity" />
           </div>
@@ -29,7 +29,7 @@
           </div>
         </div>
         <div class="features pt-3">
-          <h5><strong>Features</strong></h5>
+          <h5><strong>About Book</strong></h5>
           <ul>
             <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
             <li>Officia quas, officiis eius magni error magnam voluptatem</li>

@@ -61,13 +61,14 @@
     <!-- display total price -->
     <div class="total-cost pt-2 text-right">
       <h5>Total :  {{ totalcost.toFixed(2) }} Taka</h5>
+      
       <button
         :disabled="isDisabled()"
         type="button"
         class="btn btn-primary confirm"
         @click="checkout"
       >
-        Confirm Order
+        Confirm Rent
       </button>
     </div>
   </div>

@@ -13,6 +13,9 @@ import ListProducts from "../views/Category/ListProducts";
 import Signup from "../views/Product/Signup";
 import Signin from "../views/Product/Signin";
 import Cart from "../views/Cart";
+import Success from '../views/payment/Sucess';
+import Failed from '../views/payment/Failed';
+import Checkout from '../views/Checkout/Checkout'
 
 const routes = [
   {
@@ -92,6 +95,22 @@ const routes = [
     path: '/cart',
     name: 'Cart',
     component: Cart
+  },
+  {
+    path: '/payment/success',
+    name: 'PaymentSuccess',
+    component: Success,
+  },
+  {
+    path: '/payment/failed',
+    name: 'PaymentFailed',
+    component: Failed,
+  },
+  //checkout
+  {
+    path: '/checkout',
+    name: 'Checkout',
+    component: Checkout,
   }
 ]
 

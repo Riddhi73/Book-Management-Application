@@ -1,15 +1,15 @@
 <template>
-  <Navbar :cartCount="cartCount" @resetCartCount="resetCartCount"/>
-  <div id="nav">
-  </div>
-  <router-view v-if="categories && products" style="min-height: 60vh"
-  :baseURL="baseURL"
-  :categories="categories"
-  :products="products"
-  @fetchData="fetchData"
+  <Navbar :cartCount="cartCount" @resetCartCount="resetCartCount" />
+  <router-view
+    v-if="categories && products"
+    style="min-height: 60vh"
+    :baseURL="baseURL"
+    :categories="categories"
+    :products="products"
+    @fetchData="fetchData"
   >
   </router-view>
-  <!-- footer -->
+  <!--  footer-->
   <Footer />
 </template>
 
@@ -21,8 +21,8 @@ export default {
   components: { Navbar, Footer },
   data() {
     return {
-      // baseURL : "https://limitless-lake-55070.herokuapp.com/",
-      baseURL : "http://localhost:8080/",
+      //baseURL : "https://limitless-lake-55070.herokuapp.com/",
+      baseURL: 'http://localhost:8080/',
       products: null,
       categories: null,
       cartCount: 0,
@@ -32,14 +32,14 @@ export default {
     async fetchData() {
       // api call to get all the categories
       await axios
-        .get(this.baseURL + "category/list")
+        .get(this.baseURL + "category/")
         .then((res) => {
           this.categories = res.data;
         })
         .catch((err) => console.log("err", err));
       // api call to get the products
       await axios
-        .get(this.baseURL + "book/")
+        .get(this.baseURL + "product/")
         .then((res) => {
           this.products = res.data;
         })
