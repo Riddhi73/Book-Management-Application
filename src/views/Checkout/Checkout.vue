@@ -14,7 +14,8 @@ import axios from 'axios';
 export default { 
   data() {
     return {
-      stripeAPIToken: '<stripe token>', //mone kore token dis eikhane
+      stripeAPIToken:
+      'pk_test_51LJeaUKJhIHb14C8TyDk18DGzkygtspkxq05Y1QW4ZY0gBHUcXIedPlOUsw2qICdIVFd6UadJGPRcUeqHobxZsT300nuNnkP1s',
        stripe: '',
       token: null,
       checkoutBodyArray: [],
@@ -25,16 +26,16 @@ export default {
   methods: {
     getAllItems() {
       axios
-        .get(`${this.baseURL}cart/?token=${this.token}`)
+        .get(`${this.baseURL}cart/allitem/?token=${this.token}`)
         .then((response) => {
           if (response.status == 200) {
             let products = response.data;
-            for (let i = 0; i < products.cartItems.length; i++) {
+            for (let i = 0; i < products.cartItemDtoList.length; i++) {
               this.checkoutBodyArray.push({
-                price: products.cartItems[i].product.price,
-                quantity: products.cartItems[i].quantity,
-                productName: products.cartItems[i].product.name,
-                productId: products.cartItems[i].product.id,
+                price: products.cartItemDtoList[i].book.price,
+                quantity: products.cartItemDtoList[i].quantity,
+                bookName: products.cartItemDtoList[i].book.name,
+                bookId: products.cartItemDtoList[i].book.id,
               });
             }
           }

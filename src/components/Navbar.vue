@@ -69,6 +69,8 @@
               <router-link v-if="token" class="dropdown-item text-dark" :to="{name : 'WishList'}" >
                 WishList
               </router-link>
+              <router-link class="dropdown-item text-dark" :to="{ name: 'Admin' }"
+              >Add Category / Book</router-link>
               <router-link v-if="!token" class="dropdown-item text-dark" :to="{name : 'Signup'}" >
                 Sign Up
               </router-link>

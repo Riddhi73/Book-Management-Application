@@ -1,11 +1,11 @@
 <template>
 <div class="container py-4">
     <router-link :to="{name: 'Category'}" >
-        <button class="btn btn-primary btn-lg"> Admin Category</button>
+        <button class="btn btn-primary btn-lg"> Add Category</button>
     </router-link>
     <br />
     <router-link :to="{name: 'AdminProduct'}" >
-        <button class="btn btn-primary btn-lg"> Admin Product</button>
+        <button class="btn btn-primary btn-lg"> Add Book</button>
     </router-link>
 
 </div>

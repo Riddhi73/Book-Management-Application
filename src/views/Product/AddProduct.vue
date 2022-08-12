@@ -66,11 +66,11 @@
                     price: this.price
                 };
 
-                axios.post(this.baseURL+"product/add", newProduct)
+                axios.post(this.baseURL+"book/add", newProduct)
                 .then(() => {
                     this.$router.push({name: 'AdminProduct'});
                     swal({
-                        text: "Product added",
+                        text: "Book added",
                         icon: "success"
                     })
                 }).catch((err)=> {

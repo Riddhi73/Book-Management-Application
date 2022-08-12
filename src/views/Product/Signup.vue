@@ -65,6 +65,33 @@
                 required
               />
             </div>
+            <!-- Division -->
+            <div class="form-group">
+              <label> Division</label>
+              <input
+                  type="text"
+                  v-model="division"
+                  class="form-control"
+              />
+            </div>
+            <!-- PostCode -->
+            <div class="form-group">
+              <label> Postcode</label>
+              <input
+                  type="text"
+                  v-model="postcode"
+                  class="form-control"
+              />
+            </div>
+            <!-- Zilla -->
+            <div class="form-group">
+              <label> Zilla</label>
+              <input
+                  type="text"
+                  v-model="zilla"
+                  class="form-control"
+              />
+            </div>
             <button type="submit" class="btn btn-primary mt-2 py-0">
               Create Account
             </button>
@@ -98,7 +125,10 @@ export default {
       firstName: null,
       lastName: null,
       password: null,
-      passwordConfirm: null,
+      confirmPassword: null,
+      division:null,
+      postcode:null,
+      zilla:null,
     };
   },
   methods: {
@@ -108,10 +138,14 @@ export default {
       if (this.password === this.passwordConfirm) {
         // make the post body
         const user = {
-          email: this.email,
-          firstName: this.firstName,
-          lastName: this.lastName,
-          password: this.password,
+              division: this.division,
+              email: this.email,
+              firstName: this.firstName,
+              lastName: this.lastName,
+              password: this.password,
+
+              postcode: this.postcode,
+              zilla: this.zilla,
         };
         // call the API
 

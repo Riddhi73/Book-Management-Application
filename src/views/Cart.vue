@@ -8,17 +8,17 @@
     <!--    loop over all the cart items and display one by one-->
     <div
       v-for="cartItem in cartItems"
-      :key="cartItem.product.id"
+      :key="cartItem.id"
       class="row mt-2 pt-3 justify-content-around"
     >
       <div class="col-2"></div>
       <!-- display image -->
       <div class="col-md-3 embed-responsive embed-responsive-16by9">
         <router-link
-          :to="{ name: 'ShowDetails', params: { id: cartItem.product.id } }"
+          :to="{ name: 'ShowDetails', params: { id: cartItem.book.id } }"
         >
           <img
-            v-bind:src="cartItem.product.imageURL"
+            v-bind:src="cartItem.book.imageURL"
             class="w-100 card-img-top embed-responsive-item"
           />
         </router-link>
@@ -28,12 +28,12 @@
         <div class="card-block px-3">
           <h6 class="card-title">
             <router-link
-              :to="{ name: 'ShowDetails', params: { id: cartItem.product.id } }"
-              >{{ cartItem.product.name }}
+              :to="{ name: 'ShowDetails', params: { id: cartItem.book.id } }"
+              >{{ cartItem.book.name }}
             </router-link>
           </h6>
           <p id="item-price" class="mb-0 font-weight-bold">
-            Taka {{ cartItem.product.price }} per Week
+            Taka {{ cartItem.book.price }} per Week
           </p>
           <p id="item-quantity" class="mb-0">
             Quantity :
@@ -46,7 +46,7 @@
           <p id="item-total-price" class="mb-0">
             Total Price:
             <span class="font-weight-bold">
-              Taka {{ cartItem.product.price * cartItem.quantity }}</span
+              Taka {{ cartItem.book.price * cartItem.quantity }}</span
             >
           </p>
           <br /><a href="#" class="text-right" @click="deleteItem(cartItem.id)"
@@ -95,13 +95,13 @@ export default {
     },
     // fetch all the items in cart
     listCartItems() {
-      axios.get(`${this.baseURL}cart/?token=${this.token}`).then(
+      axios.get(`${this.baseURL}cart/allitem?token=${this.token}`).then(
         (response) => {
           if (response.status == 200) {
             const result = response.data;
             // store cartitems and total price in two variables
-            this.cartItems = result.cartItems;
-            this.totalcost = result.totalCost;
+            this.cartItems = result.cartItemDtoList;
+            this.totalcost = result.totalItemCost;
           }
         },
         (error) => {
@@ -128,10 +128,10 @@ export default {
           }
         );
     },
-    showDetails(productId) {
+    showDetails(bookId) {
       this.$router.push({
         name: 'ShowDetails',
-        params: { id: productId },
+        params: { id: bookId },
       });
     },
   },

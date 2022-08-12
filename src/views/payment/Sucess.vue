@@ -1,6 +1,6 @@
 <template>
   <div class="text-center">
-    <h1>Failed</h1>
+    <h1>Successfully Paid</h1>
   </div>
 </template>
 

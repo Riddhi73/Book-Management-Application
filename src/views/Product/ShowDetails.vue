@@ -104,14 +104,14 @@ export default {
       }
       // add to cart
       axios
-        .post(`${this.baseURL}/cart/add?token=${this.token}`, {
-          productId: this.id,
+        .post(`${this.baseURL}cart/add?token=${this.token}`, {
+          bookId: this.id,
           quantity: this.quantity,
         })
         .then((res) => {
           if (res.status == 201) {
             swal({
-              text: "Product added in cart",
+              text: "Book added in cart",
               icon: "success",
             });
             this.$emit("fetchData");
